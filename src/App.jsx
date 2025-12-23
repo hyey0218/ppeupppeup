@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 const weddingDate = new Date('2025-05-24T12:30:00+09:00');
 
@@ -79,9 +79,20 @@ const featuredPhotos = [
   }
 ];
 
+function scrollAndFocusElement(el) {
+  if (!el) return;
+  const nav = document.querySelector('.nav');
+  const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+  const top = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 12;
+  window.scrollTo({ top, behavior: 'smooth' });
+  setTimeout(() => el.focus(), 600);
+}
+
 export default function App() {
   const countdown = useCountdown(weddingDate);
   const [modalPhoto, setModalPhoto] = useState(null);
+  const locationEyebrowRef = useRef(null);
+  const portfolioEyebrowRef = useRef(null);
 
   return (
     <div className="page">
@@ -95,17 +106,31 @@ export default function App() {
       </nav>
 
       <header className="hero">
-        <div className="hero__overlay" />
+        <div className="hero__overlay">
+          <div className="hero__cta hero__cta--overlay">
+            <button
+              className="btn btn--primary"
+              type="button"
+              onClick={() => scrollAndFocusElement(portfolioEyebrowRef.current)}
+            >
+              사진첩
+            </button>
+            <button
+              className="btn btn--ghost"
+              type="button"
+              onClick={() => scrollAndFocusElement(locationEyebrowRef.current)}
+            >
+              약도
+            </button>
+          </div>
+        </div>
         <div className="hero__content">
           <p className="hero__tagline">Your Dream Wedding Captured</p>
-          <h1>Main Wedding Photography</h1>
+          {/* <h1>Main Wedding Photography</h1> */}
           <p className="hero__subtitle">
-            [메인 사진]
+            {/* [메인 사진] */}
           </p>
-          <div className="hero__cta">
-            <button className="btn btn--primary">사진첩</button>
-            <button className="btn btn--ghost">약도</button>
-          </div>
+          
         </div>
       </header>
 
@@ -136,7 +161,7 @@ export default function App() {
         </section>
 
         <section className="section portfolio">
-          <p className="section-eyebrow">Portfolio</p>
+          <p className="section-eyebrow" ref={portfolioEyebrowRef} tabIndex={-1}>Portfolio</p>
           <h2>Featured Story</h2>
           <div className="portfolio__grid">
             <div className="portfolio__lead">
@@ -203,7 +228,7 @@ export default function App() {
 
         <section className="section location">
           <div className="location__details">
-            <p className="section-eyebrow">Location</p>
+            <p className="section-eyebrow" ref={locationEyebrowRef} tabIndex={-1}>Location</p>
             <h2>오시는 길</h2>
             <p className="muted">서울 강남구 역삼로 123, 더 화이트베일 B홀</p>
             <p className="muted">02-1234-5678 | 주차 가능 · 지하철 2호선 역삼역 3번 출구 도보 7분</p>
