@@ -230,13 +230,15 @@ export default function App() {
           <div className="location__details">
             <p className="section-eyebrow" ref={locationEyebrowRef} tabIndex={-1}>Location</p>
             <h2>오시는 길</h2>
-            <p className="muted">서울 강남구 역삼로 123, 더 화이트베일 B홀</p>
-            <p className="muted">02-1234-5678 | 주차 가능 · 지하철 2호선 역삼역 3번 출구 도보 7분</p>
+            <h3 className="muted">서울 영등포구 국회대로38길 2, 2층 다이너스티홀</h3>
+            <p className="muted">지하철 이용 시 2, 5호선 영등포구청역 4번출구 도보 3분 (영등포경찰서 방면)</p>
+            <p className="muted">버스 이용 시 70-3, 5620, 6631, 6637, 7612, 영등포 02, 영등포 12</p>
+            <p className="muted">자가용 이용 시 웨딩홀 지하 주차장 1, 2F / 웨딩홀 맞은편 공영주차장 이용 가능</p>
           </div>
           <div className="map-card">
             <iframe
               title="식장 위치"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.091934734803!2d127.02860057630197!3d37.50338452752761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca403a00b3d7d%3A0x8bf0ed7e9a60f7ce!2z64yA66-464yA7Y2864Sk!5e0!3m2!1sko!2skr!4v1714123456789!5m2!1sko!2skr"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.202833182218!2d126.89647357710388!3d37.526715672049086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9f2fcdf2ac59%3A0xe40f63934c7a3561!2z642U7Luo67Kk7IWYIOyYgeuTse2PrOygkA!5e0!3m2!1sko!2skr!4v1766453546691!5m2!1sko!2skr"
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
